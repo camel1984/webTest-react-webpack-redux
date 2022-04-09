@@ -2,11 +2,15 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    mode: 'production',
+    //mode: 'development',
     entry: './src/index.js',
+    //devtool: 'inline-source-map',
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Output Management',
-            filename: 'webtest.html'
+            title: 'a test web page for various web techniques',
+            filename: 'webtest.html',
+            template: 'template/webtest.html'
         }),
     ],
     output: {
