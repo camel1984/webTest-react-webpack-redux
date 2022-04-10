@@ -4,8 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'production',
     //mode: 'development',
-    entry: './src/index.js',
+    entry: './src/index.tsx',
     //devtool: 'inline-source-map',
+    devServer: {
+        static: './dist',
+    },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'a test web page for various web techniques',
@@ -21,16 +24,13 @@ module.exports = {
     module: {
         rules: [
             {
-                // this is so that we can compile any React,
-                // ES6 and above into normal ES5 syntax
-                test: /\.(js|jsx)$/,
-                // we do not want anything from node_modules to be compiled
+                test: /\.tsx?$/,
+                use: 'ts-loader',
                 exclude: /node_modules/,
-                use: ["babel-loader"]
             },
         ]
     },
     resolve: {
-        extensions: ['*', '.js', '.jsx'],
+        extensions: ['.tsx', '.ts', '.js', '.jsx', '*',],
     },
 };
